@@ -2,11 +2,12 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react'; // Импортируем Suspense
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 
-export default function ResultPage() {
+// Перенесите основную логику в отдельный клиентский компонент
+function ResultContent() {
   const [status, setStatus] = useState<'loading' | 'success' | 'failed' | 'not_found'>('loading');
   const [orderId, setOrderId] = useState<string | null>(null);
   const params = useSearchParams();
@@ -42,5 +43,13 @@ export default function ResultPage() {
       {status === 'failed' && <p className="text-red-600">❌ Оплата не удалась.</p>}
       {status === 'not_found' && <p className="text-gray-500">Информация о платеже не найдена.</p>}
     </div>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={<p className="text-center p-10">Загрузка...</p>}>
+      <ResultContent />
+    </Suspense>
   );
 }
