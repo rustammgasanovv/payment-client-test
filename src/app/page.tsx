@@ -8,7 +8,7 @@ export default function Home() {
       <ProductCard
         title="Наушники XYZ"
         description="Беспроводные наушники с шумоподавлением"
-        price={1.99}
+        price={1.00}
       />
     </main>
   );
