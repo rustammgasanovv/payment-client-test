@@ -12,7 +12,7 @@ export const ProductCard = ({ title, price, description }: ProductCardProps) => 
   const handlePay = async () => {
     const orderId = `ORD-${Date.now()}`;
 
-    const res = await axios.post('https://payment-server-test-production.up.railway.app/payment/initiate', {
+    const res = await axios.post('https://payment-server-test-production-43f9.up.railway.app/payment/initiate', {
       orderId,
       amount: price,
     });
