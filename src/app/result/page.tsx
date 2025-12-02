@@ -22,7 +22,7 @@ function ResultContent() {
     setOrderId(ordId);
 
     axios
-      .get(`https://payment-server-test-production.up.railway.app/payment/status?orderId=${ordId}`)
+      .get(`https://payment-server-test-production-43f9.up.railway.app/payment/status?orderId=${ordId}`)
       .then((res) => {
         const stat = res.data.status;
         if (stat === 'success') setStatus('success');
